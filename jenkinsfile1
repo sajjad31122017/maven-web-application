@@ -1,0 +1,18 @@
+/* import jenkins.model.*
+jenkins = Jenkins.instance */
+
+node{
+    def mavenHome = tool name: 'maven-3.8.6'
+    stage('codePull'){
+        git branch: 'testBranch', credentialsId: 'dba89a67-a5ec-4d6d-99e8-c6f74a713451', url: 'https://github.com/sajjad31122017/maven-web-application.git'
+    }
+    stage('build'){
+        sh "${mavenHome}/bin/mvn clean install"
+    }
+    stage('toApplicationServer'){
+        sshagent(['8b7c03c5-5c57-4361-a543-1cda9068b5e9']){
+        sh 'scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@13.232.189.138:/opt/apache-tomcat-9.0.67/webapps/'
+            
+        }
+    }
+}
