@@ -26,7 +26,8 @@
 		<sonar.password>admin</sonar.password> -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
+		<sonar.host.url>http://localhost:9000/</sonar.host.url>
+		<sonar.login>squ_f713b693238c5add0c22bf27ae86301b3b6b5048</sonar.login>
 	</properties>
 
 	<dependencies>
